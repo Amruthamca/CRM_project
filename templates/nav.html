@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* Custom CSS for vertical navbar */
+        @media (min-width: 992px) {    
+            .vertical-nav {
+                position: fixed;
+                top: 56px; 
+                left: 0;
+                width: 230px;
+                height: calc(100vh - 57px); 
+                background-color: #f8f8f8;
+                overflow-y: auto;
+                padding-top: 10px; 
+                z-index: 1000; 
+                
+            }
+            .navbar-light .navbar-nav .nav-link {
+                color: #040404;
+                font-size: 16px; 
+            }
+            .navbar {
+                padding: 5px; 
+            }
+            .navbar-nav .nav-item {
+                height: 50px;
+                line-height: 50px; 
+            }
+            .navbar-nav .nav-link {
+                padding-left: 10px;
+               
+            }
+            .card-d {
+                margin-left: 250px;
+                background-color: #f5f2f2;
+                padding: 40px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 80%;
+                margin-right: 20px;
+                height: auto; 
+            }   
+            .vertical-nav .nav-link:hover {
+                background-color: #ddd; 
+            }
+            .vertical-nav .nav-item {
+                box-shadow: 0 5px 8px rgba(16, 16, 16, 0.1); 
+                padding-bottom: 20px;
+            }
+
+        }
+    </style>
+    {% load static %}
+</head>
+<body>
+    <!-- Horizontal Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <a class="navbar-brand" href="#">
+            <img src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-customer-relationship-management-concept-png-image_4667717.png" alt="Logo" style="max-height: 40px;">
+            <b class="text-white">CRM</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <!-- Vertical Navbar -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto flex-column vertical-nav bg-secondary "> 
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'user_home' %}"><i class="fas fa-home mr-3"></i>Dashboard</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'archive' %}"><i class="fas fa-archive mr-3"></i>Archives</a>
+                     
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href=""><i class="fas fa-user mr-3"></i>Profile</a>
+                    
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href=""><i class="fas fa-cog mr-3"></i>Setting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href=""><i class="fas fa-info-circle mr-3"></i>Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'logout1' %}"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav><br>
+{% block content %}
+{% endblock %}
+</body>
+</html>

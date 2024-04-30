@@ -1,0 +1,18 @@
+{% extends 'nav.html' %}
+{% block content %}
+<div class="container-fluid card-d">
+    <div id="destinationCard">
+
+    </div>
+</div>
+
+    <script>
+        window.onload=function(){
+            var cardData=localStorage.getItem('cardData');
+            if(cardData){
+                document.getElementById('destinationCard').innerHTML=cardData;
+                document.getElementById('button').style.display="none";
+            }
+        }
+    </script>
+{% endblock %}

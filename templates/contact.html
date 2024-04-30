@@ -1,0 +1,192 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .footer {  
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); 
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-heading {
+            
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+            list-style-type: none; 
+        }
+
+        .footer-links a {
+            color: #101010;
+            margin: 0 10px;
+            text-decoration: none; 
+        }
+
+        .footer-social-links {
+            margin-top: 20px;
+        }
+
+        .footer-social-links a {
+            color: #101010;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+    .card {
+        transition: transform 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: none;
+    }
+
+    .card-body {
+        background-color: #f0f2f3;
+    }
+</style>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h1 class="text-center mb-4">Looking FOr Something??..</h1>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Enter your phone number">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="company">Company</label>
+                        <input type="text" class="form-control" id="company" placeholder="Enter your company name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" class="form-control" id="subject" placeholder="Enter your subject">
+                </div>
+                <div class="form-group">
+                    <label for="company-size">Company Size</label>
+                    <select class="form-control" id="company-size">
+                        <option>1-10</option>
+                        <option>11-50</option>
+                        <option>51-100</option>
+                        <option>100+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="question">Question</label>
+                    <textarea class="form-control" id="question" rows="5" placeholder="Enter your question"></textarea>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="privacy">
+                    <label class="form-check-label" for="privacy">I agree to the Privacy Policy</label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+            <p class="text-muted mt-4">We will handle your personal data as described in our Privacy Policy, to answer your question and provide information about our products and services.</p>
+        </div>
+        <div class="col-lg-4">
+            <h5 class="mb-3">Direct Contact</h5>
+            <p><i class="fas fa-phone"></i> Phone: +123456789</p>
+            <p><i class="fas fa-envelope"></i> Email: info@example.com</p>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Schedule a demo</h5>
+                    <p class="card-text">Free,tailored,presentation by an expert</p>
+                </div>
+            </div>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Become a Partner</h5>
+                    <p class="card-text">Appoiment with a partner manager</p>
+                </div>
+            </div>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Request Custom Development</h5>
+                    <p class="card-text">Need to get in touch with developers</p>
+                </div>
+            </div><hr>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Support Requests</h5>
+                    <p class="card-text">Need help? Any question..</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br>
+<footer class="footer">
+    <h3 class="text-center">CRM</h3><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="footer-heading">Community</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Volunteer Opportunities</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">Open Source</h5>
+                <ul class="footer-links">
+                    <li><a href="#">GitHub Repository</a></li>
+                    <li><a href="#">Contributing Guidelines</a></li>
+                    <li><a href="#">License</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">Services</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Consulting</a></li>
+                    <li><a href="#">Training</a></li>
+                    <li><a href="#">Implementation</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">About Us</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Company History</a></li>
+                    <li><a href="#">Mission & Vision</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 footer-social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>&copy; 2024 CRM. All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

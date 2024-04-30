@@ -1,0 +1,145 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<style>
+   
+
+    .footer {  
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); 
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-heading {
+            
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+            list-style-type: none; 
+        }
+
+        .footer-links a {
+            color: #101010;
+            margin: 0 10px;
+            text-decoration: none; 
+        }
+
+        .footer-social-links {
+            margin-top: 20px;
+        }
+
+        .footer-social-links a {
+            color: #101010;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+</style>
+<div class="container">
+    <div class="card" style="max-width: 500px; margin: 0 auto;">
+        <div class="card shadow">
+        <div class="card-body">
+            <h2 class="card-title text-center">Sign Up</h2>
+            {% if messages %}
+            <div class="alert alert-danger" style="width: 100%; margin-bottom: 15px;">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <form action="{% url 'add_details' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="fname" placeholder="First Name">
+                    </div><br>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="lname" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="address" placeholder="Enter Address">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="num" placeholder="Contact Number">
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" class="form-control" name="uname" placeholder="Username">
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" name="pswd" placeholder="Password">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" name="cpswd" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                <br>
+                <p class="text-center">Already a member? <a href="{% url 'login1' %}">Login</a></p>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br>
+<footer class="footer">
+    <h3 class="text-center">CRM</h3><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="footer-heading">Community</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Volunteer Opportunities</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">Open Source</h5>
+                <ul class="footer-links">
+                    <li><a href="#">GitHub Repository</a></li>
+                    <li><a href="#">Contributing Guidelines</a></li>
+                    <li><a href="#">License</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">Services</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Consulting</a></li>
+                    <li><a href="#">Training</a></li>
+                    <li><a href="#">Implementation</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">About Us</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Company History</a></li>
+                    <li><a href="#">Mission & Vision</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 footer-social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>&copy; 2024 CRM. All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

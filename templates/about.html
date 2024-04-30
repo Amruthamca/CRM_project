@@ -1,0 +1,132 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .footer {  
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); 
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-heading {
+            
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+            list-style-type: none; 
+        }
+
+        .footer-links a {
+            color: #101010;
+            margin: 0 10px;
+            text-decoration: none; 
+        }
+
+        .footer-social-links {
+            margin-top: 20px;
+        }
+
+        .footer-social-links a {
+            color: #101010;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+</style>
+
+<div class="container mt-4">
+    <h2 class="text-center">About Us</h2><br>
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="mb-4">Our Story</h2>
+            <p>There is a misconception that "customer relationship management" or CRM is something new that originated towards the end of the twentieth century. The term may be new, but the practice is as old as trade and even older than money. </p>
+            <p>The first recorded example of trade dates back 20,000 years, during this time obsidian knives were  traded in what is now Papua New Guinea, between islands that had valuable obsidian deposits and those that did not. Obsidian was prized globally in those early times for its suitability for knives and other cutting implements and was traded in early Europe and Asia as well as the Americas.</p>
+        </div>
+        <div class="col-lg-6" data-aos="zoom-in-left" data-aos-delay="100">
+            <img src="https://www.salesforce.com/content/dam/web/en_us/www/images/hub/crm/complete-crm-history-header.jpg" class="img-fluid" alt="About Us Image">
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-lg-6" data-aos="zoom-in-left" data-aos-delay="100">
+            <img src="https://lform.com/cms/resources/media/2021/09/crm-blog-post-1184x694.jpg" class="img-fluid" alt="About Us Image">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="mb-4">Our Mission</h2>
+            <p>The importance of a CRM strategy is in how that same donation, volunteer, or interaction information is stored, managed, and analyzed. CRM systems have taken on that task, and have become a vital component of an effective and efficient organization.
+
+                A CRM provides the powerful tools an organization can use to become more effective and efficient, but for it to work properly, the organization needs to have a CRM vision—a clear plan for what they want to achieve. A CRM vision serves as the high-level guide that provides a focusing point for the organization’s goals, aspirations, and many of the strategies that it plans to use. </p>
+            <p>It doesn’t specify the details, but it does establish the priorities of the organization, and outlines the most important aspects of their mission and the resulting constituent experience.</p>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <h2 class="mb-4">Our Team</h2>
+            <p>CRM.Team started life as a small organization launched from a redundancy.  Today, with thousands of app users worldwide and hundreds of happy professional services customers, the business delivers consulting, administration and development services to SMB and MM companies, alongside a suite of pre-packaged AppExchange apps at scale across the world.</p>
+            <p>Founded in 2011 as a Salesforce Consulting and ISV Partner, today’s CRM.Team businesses and brands grew from our founder’s love of technology and recognition that the ever-evolving capability of the Salesforce platform would transform the way companies work.</p>
+        </div>
+        <div class="col-lg-6" data-aos="zoom-in-left" data-aos-delay="100">
+            <img src="https://crm.team/wp-content/uploads/2022/06/products.png" class="img-fluid" alt="About Us Image">
+        </div>
+    </div>
+</div>
+<br>
+<footer class="footer">
+    <h3 class="text-center">CRM</h3><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="footer-heading">Community</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Volunteer Opportunities</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">Open Source</h5>
+                <ul class="footer-links">
+                    <li><a href="#">GitHub Repository</a></li>
+                    <li><a href="#">Contributing Guidelines</a></li>
+                    <li><a href="#">License</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">Services</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Consulting</a></li>
+                    <li><a href="#">Training</a></li>
+                    <li><a href="#">Implementation</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-heading">About Us</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Company History</a></li>
+                    <li><a href="#">Mission & Vision</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 footer-social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>&copy; 2024 CRM. All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    AOS.init();
+    </script>
+    
+{% endblock %}
