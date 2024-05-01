@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import login,authenticate
-from crmapp.models import userdetails
+from crmapp.models import userdetails,CardModel
 
 # Create your views here.
 def home(request):
@@ -83,8 +83,4 @@ def logout1(request):
 
 def user_home(request):
     return render(request,'log.html')
-
-def archive(request):
-    return render(request, 'archive.html')
-
 

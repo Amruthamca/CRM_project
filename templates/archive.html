@@ -1,18 +1,27 @@
-{% extends 'nav.html' %}
-{% block content %}
-<div class="container-fluid card-d">
-    <div id="destinationCard">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive</title>
+</head>
+<body>
+    <div id="archiveContent">
+        <!-- Archived cards will be displayed here -->
     </div>
-</div>
 
     <script>
-        window.onload=function(){
-            var cardData=localStorage.getItem('cardData');
-            if(cardData){
-                document.getElementById('destinationCard').innerHTML=cardData;
-                document.getElementById('button').style.display="none";
-            }
+        window.onload = function() {
+            let archivedCards = JSON.parse(localStorage.getItem('archivedCards')) || [];
+            let archiveContent = document.getElementById('archiveContent');
+
+            // Iterate through archived cards and display them
+            archivedCards.forEach(function(card) {
+                let cardDiv = document.createElement('div');
+                cardDiv.innerHTML = card.content; // Display card content
+                archiveContent.appendChild(cardDiv);
+            });
         }
     </script>
-{% endblock %}
+</body>
+</html>
