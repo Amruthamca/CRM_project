@@ -84,3 +84,6 @@ def logout1(request):
 def user_home(request):
     return render(request,'log.html')
 
+
+
+
