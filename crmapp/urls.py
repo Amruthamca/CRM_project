@@ -11,6 +11,7 @@ urlpatterns = [
     path('add_details',views.add_details,name='add_details'),
     path('adminlogin',views.adminlogin,name='adminlogin'),
     path('logout1',views.logout1,name='logout1'),
+    #path('archived',views.archived,name='archived')
    
     
 ]

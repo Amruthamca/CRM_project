@@ -98,7 +98,7 @@
                     
 
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'user_home' %}"><i class="fas fa-home mr-3"></i>Home</a>
+                        <a class="nav-link text-white" href=""><i class="fas fa-home mr-3"></i>Home</a>
                     </li>
                     
                     
@@ -121,8 +121,8 @@
     </nav><br><br>
     <div class="container-fluid card-d" id="card">
         <div class="row">
-            <!-- Card elements -->
-            <div class="col-md-3" draggable="true" id="card1" ondragstart="dragStart(event)">
+            
+            <div class="col-md-3 mt-5" draggable="true" id="card1" ondragstart="dragStart(event)">
                 <div class="card">
                     <div class="card-body">    
                         <h3 class="card-title">Card 1</h3><br>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" draggable="true" id="card2" ondragstart="dragStart(event)">
+            <div class="col-md-3 mt-5" draggable="true" id="card2" ondragstart="dragStart(event)">
                 <div class="card" >
                     <div class="card-body">
                         <h3 class="card-title">Card 2</h3><br>
@@ -138,7 +138,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" draggable="true" id="card3" ondragstart="dragStart(event)">
+            <div class="col-md-3 mt-5" draggable="true" id="card3" ondragstart="dragStart(event)">
                 <div class="card" >
                     <div class="card-body">
                         <h3 class="card-title">Card 3</h3><br>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" draggable="true" id="card4" ondragstart="dragStart(event)">
+            <div class="col-md-3 mt-5" draggable="true" id="card4" ondragstart="dragStart(event)">
                 <div class="card" >
                     <div class="card-body">
                         <h3 class="card-title">Card 4</h6><br>
@@ -154,10 +154,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-5">
-            <!-- Card elements -->
-            <div class="col-md-3" draggable="true" id="card5" ondragstart="dragStart(event)">
+
+            <div class="col-md-3 mt-5" draggable="true" id="card5" ondragstart="dragStart(event)">
                 <div class="card">
                     <div class="card-body">    
                         <h3 class="card-title">Card 5</h3><br>
@@ -165,7 +163,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" draggable="true" id="card6" ondragstart="dragStart(event)">
+            <div class="col-md-3 mt-5" draggable="true" id="card6" ondragstart="dragStart(event)">
                 <div class="card" >
                     <div class="card-body">
                         <h3 class="card-title">Card 6</h3><br>
@@ -173,7 +171,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" draggable="true" id="card7" ondragstart="dragStart(event)">
+            <div class="col-md-3 mt-5" draggable="true" id="card7" ondragstart="dragStart(event)">
                 <div class="card" >
                     <div class="card-body">
                         <h3 class="card-title">Card 7</h3><br>
@@ -181,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" draggable="true" id="card8" ondragstart="dragStart(event)">
+            <div class="col-md-3 mt-5" draggable="true" id="card8" ondragstart="dragStart(event)">
                 <div class="card" >
                     <div class="card-body">
                         <h3 class="card-title">Card 8</h6><br>
@@ -192,7 +190,6 @@
         </div>
     </div>
     
-    <!-- Dustbin container outside card container -->
     <div class="dustbin-container mt-2">
         <div class="dustbin" id="dustbin">Drop Here to Archive</div>
     </div>
@@ -203,15 +200,13 @@
     </div>
 </center>
 <script>
-    let deletedDivs = [];
-
+    let deletedDivs = JSON.parse(localStorage.getItem('deletedDivs')) || [];
     const dustbin = document.getElementById('dustbin');
 
     dustbin.addEventListener('dragover', dragOver);
     dustbin.addEventListener('drop', drop);
 
     function dragStart(event) {
-        console.log(event.target.id)
         event.dataTransfer.setData('text/plain', event.target.id);
     }
 
@@ -224,24 +219,27 @@
     const data = event.dataTransfer.getData('text/plain').split(",");
     data.forEach(cardId => {
         const draggableElement = document.getElementById(cardId);
-        // If dropped element is dragged into the dustbin, delete it
         if (event.target.id === 'dustbin') {
+            newdraggableElement = draggableElement.cloneNode(true)
+            const unarchiveButton = createUnarchiveButton(newdraggableElement);
+            newdraggableElement.appendChild(unarchiveButton);
+            document.getElementById('deletedCardsContainer').style.display = 'block';
+            document.getElementById('deletedCards').appendChild(newdraggableElement)
             draggableElement.parentNode.removeChild(draggableElement);
             alert('Deleted!');
-            window.location.reload();
-            // Save the ID of the deleted card to local storage
             deletedDivs.push(cardId);
+        } else {
+            event.target.appendChild(draggableElement);
         }
     });
-    // Update local storage
+    
     localStorage.setItem('deletedDivs', JSON.stringify(deletedDivs));
-    // Show the deleted cards
-    displayDeletedCards();
+    window.location.reload()
 }
+
 function displayDeletedCards() {
     const deletedCards = JSON.parse(localStorage.getItem('deletedDivs')) || [];
     const deletedCardsContainer = document.getElementById('deletedCards');
-    deletedCardsContainer.innerHTML = ''; // Clear previous entries
     deletedCards.forEach(function(cardId) {
         const card = document.getElementById(cardId);
         if (card) {
@@ -253,9 +251,10 @@ function displayDeletedCards() {
 
     if (deletedCards.length > 0) {
         document.getElementById('deletedCardsContainer').style.display = 'block';
+    } else {
+        document.getElementById('deletedCardsContainer').style.display = 'none';
     }
 }
-
 
 function createUnarchiveButton(cardId) {
     const button = document.createElement('button');
@@ -263,27 +262,22 @@ function createUnarchiveButton(cardId) {
     button.classList.add('btn', 'btn-primary', 'btn-sm', 'mt-2', 'mx-2');
 
     button.addEventListener('click', function() {
-        // Remove the card from the archived list
         const cardToRemove = document.getElementById(cardId);
         cardToRemove.parentNode.removeChild(cardToRemove);
-        // Remove the card ID from deletedDivs array
         const index = deletedDivs.indexOf(cardId);
         if (index > -1) {
             deletedDivs.splice(index, 1);
         }
-        // Update local storage
+        
         localStorage.setItem('deletedDivs', JSON.stringify(deletedDivs));
-        // If there are no more archived cards, hide the archived cards container
         if (deletedDivs.length === 0) {
             document.getElementById('deletedCardsContainer').style.display = 'none';
         }
-        // Reload the page after unarchiving
+        
         window.location.reload();
     });
     return button;
 }
-
-
     window.onload = function() {
         displayDeletedCards();
     };
