@@ -12,6 +12,7 @@ urlpatterns = [
     path('adminlogin',views.adminlogin,name='adminlogin'),
     path('logout1',views.logout1,name='logout1'),
     #path('archived',views.archived,name='archived')
+    path('archive/', views.archive, name='archive'), 
    
     
 ]

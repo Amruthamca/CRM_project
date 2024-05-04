@@ -77,50 +77,22 @@
         }
 
         .dustbin {
-            width: 90px; 
-            height: 50px; 
-            border: 2px none none; 
+            width: 200px; 
+            height: 150px; 
+            border: 2px dashed black; 
+            text-align: center;
+            line-height: 100px;
             cursor: pointer;
-        }
-        .archivecard-d{
             display: none;
         }
-        .header {
-            background-color: #1f6ab5;
-            padding: 10px;
-            border-bottom: 5px solid #dee2e6;
-        }
         
-        .title {
-            font-size: 24px;
-            font-weight: bold;
+
+        .dustbin:hover {
+            background-color: #f0f0f0;
         }
-        
-        .date {
-            font-size: 18px;
-            color: #c9dae8;
+        .container-fluid.card-d {
+            display: none;
         }
-        
-        .card-metric {
-            margin-bottom: 20px;
-        }
-        
-        .metric-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .metric-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #007bff;
-        }
-        
-        .card-b {
-            padding: 20px;
-        }
-  
     </style>
 </head>
 <body>
@@ -154,77 +126,14 @@
         </a>
         
     </nav><br><br>
-    <div class="container">
-        <div class="row header">
-            <div class="col-md-6">
-                <div class="title">Company Sales Funnel</div>
-            </div>
-            <div class="col-md-6 d-flex justify-content-end">
-                <div class="date">This Month</div>
-            </div>
-        </div><br>
+
+    <h2 class="text-center">Archived Cards</h2><br>
+    <div class="container" id="deletedCardsContainer" style="display: none;">
         
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-metric">
-                    <div class="card-b">
-                        <div class="metric-title">Deals Won</div>
-                        <div class="metric-value">547,740</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-metric">
-                    <div class="card-b">
-                        <div class="metric-title">Deals Lost</div>
-                        <div class="metric-value">300</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-metric">
-                    <div class="card-b">
-                        <div class="metric-title">Close Rate</div>
-                        <div class="metric-value">29%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-metric">
-                    <div class="card-body">
-                        <div class="metric-title">Attributed Revenue</div>
-                        <div class="metric-value">$3,100,08</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-metric">
-                    <div class="card-body">
-                        <div class="metric-title">Total Sales Opportunities</div>
-                        <div class="metric-value">98</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-metric">
-                    <div class="card-b">
-                        <div class="metric-title">Average Days to Close</div>
-                        <div class="metric-value">7.5</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="deletedCards"></div>
     </div>
-<br><br><br>
-    <div class="container-fluid card-d " id="card">
-        <center>
-        <div class="dustbin" id="dustbin">
-            <i class="fas fa-trash-alt"></i>
-        </div>
-        </center>
+
+    <div class="container-fluid card-d" id="card">
         <div class="row">
             
             <div class="col-md-3 mt-5" draggable="true" id="card1" ondragstart="dragStart(event)">
@@ -263,17 +172,13 @@
                     </div>
                 </div>
             </div>
-
-            
         </div>
     </div>
     
-   <!-- archive card id -->
-    <center>
-    <div class="container archivecard-d" id="deletedCardsContainer">
-        <div id="deletedCards"></div>
+    <div class="dustbin-container mt-2">
+        <div class="dustbin" id="dustbin">Drop Here to Archive</div>
     </div>
-    </center>
+   
 <script>
     let deletedDivs = JSON.parse(localStorage.getItem('deletedDivs')) || [];
     const dustbin = document.getElementById('dustbin');
@@ -298,7 +203,7 @@
             newdraggableElement = draggableElement.cloneNode(true)
             const unarchiveButton = createUnarchiveButton(newdraggableElement);
             newdraggableElement.appendChild(unarchiveButton);
-            document.getElementById('deletedCardsContainer').style.display = 'none';
+            document.getElementById('deletedCardsContainer').style.display = 'block';
             document.getElementById('deletedCards').appendChild(newdraggableElement)
             draggableElement.parentNode.removeChild(draggableElement);
             alert('Deleted!');
@@ -325,7 +230,7 @@ function displayDeletedCards() {
     });
 
     if (deletedCards.length > 0) {
-        document.getElementById('deletedCardsContainer').style.display = 'none';
+        document.getElementById('deletedCardsContainer').style.display = 'block';
     } else {
         document.getElementById('deletedCardsContainer').style.display = 'none';
     }

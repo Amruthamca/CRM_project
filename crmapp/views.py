@@ -85,7 +85,6 @@ def user_home(request):
     return render(request,'log.html')
 
 
-
-
-
+def archive(request):
+    return render(request, 'archived.html')
 
