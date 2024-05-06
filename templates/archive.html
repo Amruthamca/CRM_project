@@ -1,0 +1,123 @@
+{% extends 'sidebar.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    body{
+        
+        background-color:#f9f9f9;
+    }
+
+.card-body{
+        background-color: rgb(195, 250, 232);
+        border-radius: 5px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+    .cardbox{
+        box-shadow: 2px 3px 3px rgb(165, 162, 162);
+        padding: 5px;
+        background-color: rgba(202, 180, 180, 0.646);
+        
+    }
+    
+    .cardbox:hover{
+        box-shadow: 2px 8px 20px black;
+        top: -5px;
+    }
+    .cardbox a {
+        display: none;
+    }
+    
+    
+    .draggable:active {
+        opacity: 0.4; /* Reduce opacity when dragging */
+        cursor: grabbing;
+    }
+</style>
+
+<div class="container mt-5">
+    <h3 style="display: block;" class="px-3 pb-4 border-bottom">Archived Cards</h3>
+</div>
+    
+<div id="archivedCardsContainer" class=" justify-content-center py-5" style="display: flex;flex-wrap: wrap;gap: 20px;justify-content: start;">
+    <!-- cards here     -->
+    
+</div>
+<center ><div id="oops" style="display: none;min-height: 79vh;"><h1 style="color: gray;" >No Archived Card Here .</h1></div></center>
+
+<div style="min-height: 20vh;"></div>
+    
+
+
+<script>
+   // Load archived cards from local storage
+    let archivedCards = JSON.parse(localStorage.getItem('archivedCards')) || [];
+
+    // Get container element
+    let archivedCardsContainer = document.getElementById('archivedCardsContainer');
+
+    let oopsMsg = document.getElementById('oops');
+
+    // Function to remove a card from the DOM and update local storage
+    function removeCard(index) {
+        // Remove the corresponding card from the archivedCards array
+        archivedCards.splice(index, 1);
+        // Save the updated archivedCards array to local storage
+        saveToLocalStorage();
+        // Clear the container
+        archivedCardsContainer.innerHTML = '';
+        // Re-display archived cards
+        displayArchivedCards();
+    }
+
+    // Function to display archived cards
+    function displayArchivedCards() {
+        
+        if (archivedCards.length === 0){
+            oopsMsg.style.display = 'block';
+
+        }else{
+            oopsMsg.style.display = 'none';
+            archivedCards.forEach(function(cardHTML, index) {
+            // Create a div element to contain each archived card
+            let cardDiv = document.createElement('div');
+            cardDiv.classList.add('card', 'draggable', 'cardbox');
+            cardDiv.style.width = '18rem';
+            cardDiv.innerHTML = cardHTML; // Set inner HTML to the archived card content
+
+            // Create a button element to remove the corresponding card
+            let removeButton = document.createElement('button');
+            removeButton.classList.add('btn','btn-info','my-3');
+            removeButton.style.width = '50%';
+            removeButton.style.marginLeft = '25%';
+            removeButton.textContent = 'Unarchive';
+            removeButton.addEventListener('click', function() {
+                // Call removeCard function with the corresponding index
+                removeCard(index);
+                
+                // Remove the card from the DOM
+                cardDiv.remove();
+            });
+
+            // Append the button to the card div
+            cardDiv.appendChild(removeButton);
+
+            // Append the card div to the container
+            archivedCardsContainer.appendChild(cardDiv);
+        });
+        }
+    }
+
+    // Display archived cards initially
+    displayArchivedCards();
+
+    // Function to save archived cards to local storage
+    function saveToLocalStorage() {
+        localStorage.setItem('archivedCards', JSON.stringify(archivedCards));
+    }
+
+</script>
+
+{% endblock %}
+

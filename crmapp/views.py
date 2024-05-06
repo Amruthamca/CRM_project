@@ -82,9 +82,9 @@ def logout1(request):
 
 
 def user_home(request):
-    return render(request,'log.html')
+    return render(request,'index.html')
 
 
 def archive(request):
-    return render(request, 'archived.html')
+    return render(request, 'archive.html')
 

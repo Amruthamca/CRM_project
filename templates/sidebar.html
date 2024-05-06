@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/30ecc6e708.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    /* scrollbar */
+    /* Width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: transparent;
+      
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #c1efef;
+      border-radius: 10px;
+      
+    }
+    body{
+        background-color: #f9f9f9;
+    }
+ 
+    .nv {
+        font-family: Arial, sans-serif;
+    }
+    .nv a {
+        color: black;
+    }
+    .nitem {
+        position: relative;
+    }
+
+    
+
+    .sidebar {
+        width: 250px; /* Adjust width as needed */
+        min-height: 100vh; /* Make sidebar full height */
+        position: fixed; /* Make sidebar position fixed */
+        top: 0; /* Align sidebar to the top */
+        left: 0; /* Align sidebar to the left */
+        overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+    }
+
+    .sidebar img {
+        max-width: 100%; /* Ensure logo doesn't exceed sidebar width */
+    }
+
+    .nav {
+        padding-top: 20px; /* Add top padding to the nav */
+    }
+
+    .nav-item {
+        background-color: rgba(255, 255, 255, 0.5); /* Background color for list items */
+        margin-bottom: 5px; /* Add some margin between list items */
+        border-radius: 10px; /* Add border radius to style list items */
+    }
+
+    .nav-item a {
+        color: black; /* Change the font color */
+    }
+
+    .nav-item a:hover {
+        color: rgb(102, 98, 98); /* Change font color on hover */
+        text-decoration: none; /* Remove underline on hover */
+    }
+    
+</style>
+<body>
+    <div class="container-fluid" >
+        <div class="row" >
+            <!-- Collapse Button -->
+            <button style="z-index: 101;background-color: transparent;position: fixed;" class="btn d-md-none" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-expanded="false" aria-controls="sidebarCollapse">
+                <span class="" style="z-index: 101;"><i class="fa-solid fa-bars"></i></span>
+            </button>
+    
+            <!-- Sidebar Column -->
+            <div class="col-md-2 collapse d-md-block bcolor" id="sidebarCollapse" style="z-index: 100;">
+                <div class="sidebar" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/007/784/841/small/health-and-science-medical-innovation-concept-abstract-geometric-futuristic-background-from-hexagons-pattern-light-blue-radiant-background-illustration-vector.jpg');">
+                    <ul class="nav flex-column nv bcolor" style="min-height: 100vh;" id="ul">
+
+                        <div class="text-center mb-4">
+                            <img src="https://cdn-icons-png.freepik.com/256/12885/12885077.png?semt=ais_hybrid" alt="Logo" class="img-fluid" style="max-width: 100px;"><br>
+                            <b class="text-white">CRM</b>
+                        </div>
+
+                        <li class="nav-item px-3">
+                            <a class="nav-link nitem" id="link4" href="{% url 'user_home' %}"><i class="fas fa-home mr-3"></i>Dashboard</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nitem" id="link5" href="{% url 'archive' %}"><i class="fas fa-trash mr-3"></i>Archives</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nitem" id="link5" href="{% url 'logout1' %}"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Main Content Column -->
+            <div class="col-md-10"  id="mainBody">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    // Function to handle click event
+    function handleClick(event) {
+        // Remove the 'active' class from all links
+        document.querySelectorAll('.nitem').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Add the 'active' class to the clicked link
+        this.classList.add('active');
+
+        // Store the ID of the clicked link in local storage
+        localStorage.setItem('activeLink', this.id);
+    }
+
+    // Add click event listener to each link
+    document.querySelectorAll('.nitem').forEach(link => {
+        link.addEventListener('click', handleClick);
+    });
+
+    // On page load, check if there's an active link in local storage and apply the active state
+    document.addEventListener('DOMContentLoaded', function() {
+        const activeLinkId = localStorage.getItem('activeLink');
+        if (activeLinkId) {
+            const activeLink = document.getElementById(activeLinkId);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+    </script>
+    
+    
+</body>
+</html>

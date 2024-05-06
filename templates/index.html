@@ -1,0 +1,367 @@
+{% extends 'sidebar.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .card-body{
+        background-color: whitesmoke;
+        /* background-color: rgb(195, 250, 232); */
+        border-radius: 5px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+    .cardbox{
+        /* border-radius: 15px; */
+        box-shadow: 2px 3px 3px grey;
+        padding: 5px;
+        /* background-color: rgba(20, 188, 168, 0.2); */
+    }
+    
+    .cardbox:hover{
+        box-shadow: 2px 8px 20px black;
+        top: -5px;
+    }
+    .cardbox a {
+        text-decoration: none;
+        color: rgb(71, 68, 68);
+        background-color: transparent;
+    }
+   
+
+    .draggable:active {
+        opacity: 0.4; /* Reduce opacity when dragging */
+        cursor: grabbing;
+    }
+    #archiveBox{
+        /* width: 100px;
+        height: 100px; */
+        transition: all 0.7s ease;
+        
+    }
+    /* #archiveBox.dragover{
+        height: 150px;
+        width: 150px;       
+        
+    } */
+    #archiveBox.drop{
+        height: 0px;
+        width: 0px;
+        transition: all 0.7s ease;
+    }
+    @media (min-width: 768px) {
+        #archiveIcon { 
+        position: relative;   
+        justify-self: center;
+        align-self: center;
+        padding: 5% 4%;
+        
+        border: 2px solid rgba(38, 108, 187, 0.6);
+        background-color: rgba(58, 87, 157, 0.2);
+        transition: top 0.7s ease; 
+        
+    }
+    }
+
+    @media (max-width: 768px) {
+        #archiveIcon{
+            position: relative;   
+            justify-self: center;
+            align-self: center;
+            padding: 50px 40px;
+           
+            border: 2px solid rgba(70, 184, 229, 0.6);
+            background-color: rgba(78, 157, 193, 0.2);
+            transition: top 0.7s ease; 
+        }
+    }
+
+
+    #archiveBox.dragover #archiveIcon {
+    font-size: 2em; 
+    /* padding: 50% 35%; */
+    transition: font-size 0.7s ease; 
+    }
+    #archiveDiv{
+        display: none;               
+        transition: opacity 0.7s ease;
+    }
+
+</style>
+<div class="container mt-5"></div>
+<h2 class="container m-3">Dashboard</h2>
+<div class="row m-5 "> 
+    <div class="col-md-9 mr-3">
+        <div class="row">
+            <div class="col-md-4 my-3 p-2 mr-md-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+                <div class="row">
+                    <div class="col-4"><i class="fas fa-chart-pie mt-2 ml-2 fa-3x" style="color: #007bff;"></i></div> 
+                    <div class="col mb-1">Sales <br> $37,900<span class="ml-3 px-2 py-1" style="color: green;background-color: rgba(10, 220, 10, 0.37);font-size: small;border-radius: 15px;">+ 22.9%</span> </div>
+                </div>
+            </div>
+            <div class="col-md-3 my-3 p-2 mx-md-3" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+                <div class="row">
+                    <div class="col-4"><i class="fas fa-box mt-3 ml-2 fa-3x" style="color: #dc3545;"></i></div> 
+                    <div class="col mb-1">Orders <br> $3050 <span class="ml-1 px-1 py-1" style="color: red;background-color: rgba(255, 0, 0, 0.3);font-size: small;border-radius: 15px;">- 0.9%</span></div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3 p-2 ml-md-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+                <div class="row">
+                    <div class="col-4"><i class="fas fa-user mt-2 ml-2 fa-3x" style="color: #ffc107;"></i></div> 
+                    <div class="col mb-1">Customers <br> $7987 <span class="ml-4 px-2 py-1" style="color: rgb(0, 162, 255);background-color: rgba(91, 46, 187, 0.3);font-size: small;border-radius: 15px;">- 0.2%</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container m-3"> <!-- Adjusted margin for mobile view and added container-fluid for full width -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0" style="box-shadow: 1px 2px 4px gray;"> <!-- Removed the border -->
+                <p class="ml-3 my-2" style="font-weight: 500;">User Activity</p>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center mb-3 mb-md-0"> <!-- Centered the image -->
+                            <img src="https://www.superoffice.com/globalassets/blog/2014/3/how-consumers-react-to-bad-customer-service.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="card border-0" style="box-shadow: 1px 2px 4px gray;"> <!-- Removed the border -->
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col-8 col-md-12"> <!-- Adjusted width -->
+                            <img src="https://www.statology.org/wp-content/uploads/2023/07/cdiff7.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br><br>
+
+
+
+    <!-- archive box -->
+    <div class="row mt-5" id="archiveDiv"  >
+        <div id="archiveBox" class="col d-flex justify-content-center" >
+            <i id="archiveIcon" class="fa-solid fa-box-archive fa-fade fa-xl" style="color: rgb(74, 186, 234);"></i>
+        </div>
+    </div>
+    
+    <!-- cards -->
+    <div class="row my-3" >
+    <div class=" col-md justify-content-center  py-5" style="display: flex;flex-wrap: wrap;justify-content: start;">
+    
+        <div >
+            <div class="card draggable cardbox mx-md-2 mt-4" style="width: 17rem;background-color: #E1AFD1;" draggable="true">  
+                <center><div class="mt-5" ><h1 class="text-danger">75%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Profit.</h4></div></center>      
+               <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> <hr>
+               <center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+                </div>
+                
+            </div>
+       
+    
+        <div >
+            <div class="card draggable cardbox mx-md-2 mt-4" style="width: 17rem;background-color: #a9f3a7;" draggable="true">  
+                
+                <center><div class="mt-5" ><h1 class="text-danger">12%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Benefits.</h4></div></center>      
+               <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> <hr>
+               <center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+                </div>
+    
+            </div>
+        
+    
+        <div >
+            <div class="card draggable cardbox mx-md-2 mt-4" style="width: 17rem;background-color: rgb(244, 233, 236);" draggable="true">  
+                <center><div class="mt-5" ><h1 class="text-danger">35%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Marketing.</h4></div></center>      
+                <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> <hr>
+                <center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+                 </div>
+            </div>
+       
+    
+    
+        <div >
+            <div class="card draggable cardbox mx-md-2 mt-4" style="width: 17rem;background-color: rgb(199, 192, 236);" draggable="true">  
+                <center><div class="mt-5" ><h1 class="text-danger">15%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Advertisement.</h4></div></center>      
+               <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> 
+               <hr><center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+        
+    
+        
+        
+    </div>
+    
+    
+    </div>
+    <!-- </div> -->
+    
+    
+    <script>
+       
+        let cards = document.getElementsByClassName('cardbox');
+        let archiveBox = document.getElementById('archiveBox');
+        let archiveDiv = document.getElementById('archiveDiv');
+    
+        // Load archived cards from local storage
+        let archivedCards = JSON.parse(localStorage.getItem('archivedCards')) || [];
+    
+        // Function to save archived cards to local storage
+        function saveToLocalStorage() {
+            localStorage.setItem('archivedCards', JSON.stringify(archivedCards));
+        }
+    
+        // Function to handle dropping a card into the archive box
+        function handleDrop(selectedCard) {
+            selectedCard.style.display = 'none';
+            archiveDiv.style.display = 'none';
+            archivedCards.push(selectedCard.innerHTML); // Save card HTML content
+            saveToLocalStorage(); // Save to local storage
+            
+        }
+    
+        for (let card of cards) {
+        // Add dragstart event listener for desktop view
+        card.addEventListener("dragstart", function(e) {
+            archiveDiv.style.display = 'block'; // Display the archiveDiv
+            archiveDiv.style.opacity = '1';
+            let selected = e.target;
+    
+            archiveBox.addEventListener("dragover", function(e) {
+                e.preventDefault();
+            });
+    
+            card.addEventListener("dragend", function(e) {
+                archiveDiv.style.display = 'none';
+                selected = null;
+            });
+    
+            archiveBox.addEventListener("drop", function(e) {
+                e.preventDefault();
+                handleDrop(selected);
+            });
+        });
+    
+        // Add touchstart event listener
+        card.addEventListener("touchstart", function(e) {
+            // Prevent default touch behavior to avoid issues with touch events
+            e.preventDefault();
+            archiveDiv.style.display = 'block'; // Display the archiveDiv
+            archiveDiv.style.opacity = '1';
+            // Get the touch target
+            let touch = e.touches[0];
+            
+            // Store initial touch coordinates
+            card.setAttribute('data-touchstart-x', touch.clientX);
+            card.setAttribute('data-touchstart-y', touch.clientY);
+        });
+    
+        // Add touchmove event listener
+        card.addEventListener("touchmove", function(e) {
+            // Prevent default touch behavior to avoid issues with touch events
+            e.preventDefault();
+            
+            // Get the touch target
+            let touch = e.touches[0];
+            
+            // Calculate distance moved
+            let deltaX = touch.clientX - parseInt(card.getAttribute('data-touchstart-x'));
+            let deltaY = touch.clientY - parseInt(card.getAttribute('data-touchstart-y'));
+            
+            // Apply translation to the card's position
+            card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        });
+    
+        
+    
+        card.addEventListener("touchend", function(e) {
+        // Reset card position after touchend
+        card.style.transform = 'translate(0px, 0px)';
+        setTimeout(function() {
+            archiveDiv.style.display = 'none';
+        }, 200); // Hide the archiveDiv after touchend
+        
+        // Get the touch position relative to the viewport
+        var touchX = e.changedTouches[0].clientX;
+        var touchY = e.changedTouches[0].clientY;
+        console.log("Touch position: X:", touchX, "Y:", touchY);
+        
+        // Check if the touch ended within the boundaries of the archiveDiv
+        var elementUnderTouch = document.elementFromPoint(touchX, touchY);
+        console.log("Element under touch:", elementUnderTouch);
+        if (elementUnderTouch.id === "archiveIcon") {
+            handleDrop(card);
+        }
+    });
+    
+    
+    
+        
+        
+    }
+    
+    
+        function hideArchivedCards() {
+        // Load archived cards from local storage
+        let archivedCards = JSON.parse(localStorage.getItem('archivedCards')) || [];
+        
+        // Iterate through each card
+        for (let card of cards) {
+            // Check if the card's inner HTML content is in the archived cards
+            if (archivedCards.includes(card.innerHTML)) {
+                card.style.display = 'none'; // Hide the card if it's archived
+            }
+        }
+    }
+    
+    // Call the function to hide archived cards when the page loads
+    window.addEventListener('load', hideArchivedCards);
+    
+    
+    
+    
+    
+    
+        
+       // dragover archivebox style
+    
+       let archiveIcon = document.getElementById('archiveIcon');
+    
+        archiveBox.addEventListener('dragover', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            archiveBox.classList.add('dragover'); // Add 'dragover' class
+            
+        });
+    
+        archiveBox.addEventListener('dragleave', function(event) {
+            archiveBox.classList.remove('dragover'); // Remove 'dragover' class when leaving
+            
+        });
+    
+        archiveBox.addEventListener('drop', function(event) {
+            archiveBox.classList.remove('dragover'); // Remove 'dragover' class when leaving
+            
+        });
+    
+    
+        
+    
+        
+    </script>
+    
+    
+    
+       
+    
+
+{% endblock %}
