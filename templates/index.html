@@ -2,6 +2,18 @@
 {% block content %}
 {% load static %}
 <style>
+    
+    body{
+        overflow-x: hidden;
+        background-color:#f9f9f9;
+    }
+    
+   .box-l {
+    box-shadow: 0 1px 1px none, 0 1px 1px none;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
     .card-body{
         background-color: whitesmoke;
         /* background-color: rgb(195, 250, 232); */
@@ -10,10 +22,10 @@
         border-top-right-radius: 50%;
     }
     .cardbox{
-        /* border-radius: 15px; */
+        
         box-shadow: 2px 3px 3px grey;
         padding: 5px;
-        /* background-color: rgba(20, 188, 168, 0.2); */
+        
     }
     
     .cardbox:hover{
@@ -28,7 +40,7 @@
    
 
     .draggable:active {
-        opacity: 0.4; /* Reduce opacity when dragging */
+        opacity: 0.4; 
         cursor: grabbing;
     }
     #archiveBox{
@@ -48,6 +60,7 @@
         transition: all 0.7s ease;
     }
     @media (min-width: 768px) {
+        
         #archiveIcon { 
         position: relative;   
         justify-self: center;
@@ -60,7 +73,7 @@
         
     }
     }
-
+    
     @media (max-width: 768px) {
         #archiveIcon{
             position: relative;   
@@ -74,10 +87,9 @@
         }
     }
 
-
+    
     #archiveBox.dragover #archiveIcon {
     font-size: 2em; 
-    /* padding: 50% 35%; */
     transition: font-size 0.7s ease; 
     }
     #archiveDiv{
@@ -85,53 +97,72 @@
         transition: opacity 0.7s ease;
     }
 
+
 </style>
-<div class="container mt-5"></div>
-<h2 class="container m-3">Dashboard</h2>
-<div class="row m-5 "> 
-    <div class="col-md-9 mr-3">
-        <div class="row">
-            <div class="col-md-4 my-3 p-2 mr-md-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
-                <div class="row">
-                    <div class="col-4"><i class="fas fa-chart-pie mt-2 ml-2 fa-3x" style="color: #007bff;"></i></div> 
-                    <div class="col mb-1">Sales <br> $37,900<span class="ml-3 px-2 py-1" style="color: green;background-color: rgba(10, 220, 10, 0.37);font-size: small;border-radius: 15px;">+ 22.9%</span> </div>
-                </div>
+<div class="container-fluid mt-5">
+
+<div class="container">
+    <div class="row m-5">
+        <h2 class="container mt-5 ml-2">Dashboard</h2>
+        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+            <div class="row">
+                <div class="col text-center"><i class="fas fa-chart-pie mt-2 ml-2 fa-3x" style="color: #007bff;"></i></div> 
             </div>
-            <div class="col-md-3 my-3 p-2 mx-md-3" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
-                <div class="row">
-                    <div class="col-4"><i class="fas fa-box mt-3 ml-2 fa-3x" style="color: #dc3545;"></i></div> 
-                    <div class="col mb-1">Orders <br> $3050 <span class="ml-1 px-1 py-1" style="color: red;background-color: rgba(255, 0, 0, 0.3);font-size: small;border-radius: 15px;">- 0.9%</span></div>
-                </div>
+            <div class="row">
+                <div class="col text-center mb-1">Sales <br> $37,900 <span class="ml-2 px-2 py-1" style="color: green;background-color: rgba(10, 220, 10, 0.37);font-size: small;border-radius: 15px;">+ 2.9%</span></div>
             </div>
-            <div class="col-md-4 my-3 p-2 ml-md-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
-                <div class="row">
-                    <div class="col-4"><i class="fas fa-user mt-2 ml-2 fa-3x" style="color: #ffc107;"></i></div> 
-                    <div class="col mb-1">Customers <br> $7987 <span class="ml-4 px-2 py-1" style="color: rgb(0, 162, 255);background-color: rgba(91, 46, 187, 0.3);font-size: small;border-radius: 15px;">- 0.2%</span> </div>
-                </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+            <div class="row">
+                <div class="col text-center"><i class="fas fa-box mt-2 ml-2 fa-3x" style="color: #dc3545;"></i></div> 
+            </div>
+            <div class="row">
+                <div class="col text-center mb-1">Orders <br> $3050 <span class="ml-1 px-2 py-1" style="color: red;background-color: rgba(255, 0, 0, 0.3);font-size: small;border-radius: 15px;">- 0.9%</span></div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+            <div class="row">
+                <div class="col text-center"><i class="fas fa-user mt-2 ml-2 fa-3x" style="color: #ffc107;"></i></div> 
+            </div>
+            
+            <div class="row">
+                <div class="col text-center mb-1">Customers <br> $7987 <span class="ml-2 px-2 py-1" style="color: rgb(0, 162, 255);background-color: rgba(91, 46, 187, 0.3);font-size: small;border-radius: 15px;">- 0.2%</span></div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+            <div class="row">
+                <div class="col text-center"><i class="fas fa-money-bill  mt-2 ml-2 fa-3x" style="color: #943a1f;"></i></div> 
+            </div>
+            
+            <div class="row">
+                <div class="col text-center mb-1">Revenue <br> $987 <span class="ml-2 px-2 py-1" style="color: rgb(138, 156, 149);background-color: rgba(135, 222, 152, 0.3);font-size: small;border-radius: 15px;">- 0.2%</span></div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container m-3"> <!-- Adjusted margin for mobile view and added container-fluid for full width -->
+<div class="container m-3"> 
     <div class="row">
         <div class="col-md-6">
-            <div class="card border-0" style="box-shadow: 1px 2px 4px gray;"> <!-- Removed the border -->
+            <div class="card border-0" style="box-shadow: 1px 2px 4px gray;"> 
                 <p class="ml-3 my-2" style="font-weight: 500;">User Activity</p>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col text-center mb-3 mb-md-0"> <!-- Centered the image -->
+                        <div class="col text-center mb-3 mb-md-0"> 
                             <img src="https://www.superoffice.com/globalassets/blog/2014/3/how-consumers-react-to-bad-customer-service.png" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 ">
-            <div class="card border-0" style="box-shadow: 1px 2px 4px gray;"> <!-- Removed the border -->
+        <div class="col-md-6">
+            <div class="card border-0" style="box-shadow: 1px 2px 4px gray;"> 
                 <div class="card-body">
                     <div class="row justify-content-center">
-                        <div class="col-8 col-md-12"> <!-- Adjusted width -->
+                        <div class="col-8 col-md-12"> 
                             <img src="https://www.statology.org/wp-content/uploads/2023/07/cdiff7.png" class="img-fluid" alt="">
                         </div>
                     </div>
@@ -139,8 +170,13 @@
             </div>
         </div>
     </div>
-</div><br><br>
+</div>
 
+
+
+<div class="container m-3 mt-5 box-l">
+    <img src="https://www.datapine.com/blog/wp-content/uploads/2019/06/monthly-sales-report-template.png" style="max-width: 100%; height: auto;">
+</div>
 
 
     <!-- archive box -->
@@ -158,7 +194,7 @@
             <div class="card draggable cardbox mx-md-2 mt-4" style="width: 17rem;background-color: #E1AFD1;" draggable="true">  
                 <center><div class="mt-5" ><h1 class="text-danger">75%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Profit.</h4></div></center>      
                <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> <hr>
-               <center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+               <center> <a href="{% url 'user_home' %}" class="btn p-3 w-100 " >Show more..</a> </center>
                 </div>
                 
             </div>
@@ -169,7 +205,7 @@
                 
                 <center><div class="mt-5" ><h1 class="text-danger">12%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Benefits.</h4></div></center>      
                <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> <hr>
-               <center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+               <center> <a href="{% url 'user_home' %}" class="btn p-3 w-100 " >Show more..</a> </center>
                 </div>
     
             </div>
@@ -179,7 +215,7 @@
             <div class="card draggable cardbox mx-md-2 mt-4" style="width: 17rem;background-color: rgb(244, 233, 236);" draggable="true">  
                 <center><div class="mt-5" ><h1 class="text-danger">35%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Marketing.</h4></div></center>      
                 <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> <hr>
-                <center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+                <center> <a href="{% url 'user_home' %}" class="btn p-3 w-100 " >Show more..</a> </center>
                  </div>
             </div>
        
@@ -189,23 +225,17 @@
             <div class="card draggable cardbox mx-md-2 mt-4" style="width: 17rem;background-color: rgb(199, 192, 236);" draggable="true">  
                 <center><div class="mt-5" ><h1 class="text-danger">15%</h1><h4 class="card-title py-3 justify-content-center d-flex" >&nbsp;Advertisement.</h4></div></center>      
                <p style="text-align: justify; font-style: oblique;">sales play a pivotal role in driving business success. CRM systems provide invaluable tools and platforms for managing customer interactions, tracking leads.</p> 
-               <hr><center> <a href="#" class="btn p-3 w-100 " >Show more..</a> </center>
+               <hr><center> <a href="{% url 'user_home' %}" class="btn p-3 w-100 " >Show more..</a> </center>
                 </div>
             </div>
         </div>
     
-    
-    
-        
-    
-        
-        
     </div>
     
     
     </div>
     <!-- </div> -->
-    
+</div>
     
     <script>
        
@@ -304,12 +334,7 @@
         }
     });
     
-    
-    
-        
-        
     }
-    
     
         function hideArchivedCards() {
         // Load archived cards from local storage
@@ -326,12 +351,6 @@
     
     // Call the function to hide archived cards when the page loads
     window.addEventListener('load', hideArchivedCards);
-    
-    
-    
-    
-    
-    
         
        // dragover archivebox style
     
@@ -352,16 +371,7 @@
             archiveBox.classList.remove('dragover'); // Remove 'dragover' class when leaving
             
         });
-    
-    
-        
-    
         
     </script>
     
-    
-    
-       
-    
-
 {% endblock %}

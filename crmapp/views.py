@@ -52,7 +52,7 @@ def add_details(request):
                 )
                 reg.save()
                 messages.success(request, 'Profile created successfully!')
-                return redirect('home')
+                return redirect('login1')
         else:
             messages.info(request, 'Password doesnt match')
             return redirect('signup')

@@ -1,154 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/30ecc6e708.js" crossorigin="anonymous"></script>
-</head>
-<style>
-    /* scrollbar */
-    /* Width */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>CRM</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/30ecc6e708.js" crossorigin="anonymous"></script>
+  
+  <style>
+   :root {
+    --font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-      background: transparent;
-      
-    }
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: #c1efef;
-      border-radius: 10px;
-      
-    }
-    body{
-        background-color: #f9f9f9;
-    }
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+nav {
+    display: block;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  
+    text-align: left;
+    
+}
+
+.dashboard {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-app {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+    margin-top: 84px;
+}
+
+.dashboard-content {
+    -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+    padding: 25px;
+}
+
+.dashboard-nav {
+    min-width: 234px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
  
-    .nv {
-        font-family: Arial, sans-serif;
-    }
-    .nv a {
-        color: black;
-    }
-    .nitem {
-        position: relative;
-    }
-
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/007/784/841/small/health-and-science-medical-innovation-concept-abstract-geometric-futuristic-background-from-hexagons-pattern-light-blue-radiant-background-illustration-vector.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     
+}
 
-    .sidebar {
-        width: 250px; /* Adjust width as needed */
-        min-height: 100vh; /* Make sidebar full height */
-        position: fixed; /* Make sidebar position fixed */
-        top: 0; /* Align sidebar to the top */
-        left: 0; /* Align sidebar to the left */
-        overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+.dashboard-compact .dashboard-nav {
+    display: none;
+}
+
+.dashboard-nav header {
+    min-height: 84px;
+    padding: 8px 27px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.dashboard-nav header .menu-toggle {
+    display: none;
+    margin-right: auto;
+}
+
+.dashboard-nav a {
+    color: black;
+}
+
+.dashboard-nav a:hover {
+    text-decoration: none;
+}
+
+.dashboard-nav-list {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.dashboard-nav-item {
+    min-height: 56px;
+    padding: 8px 20px 8px 70px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    letter-spacing: 0.02em;
+    transition: ease-out 0.5s;
+}
+
+.dashboard-nav-item i {
+    width: 36px;
+    font-size: 19px;
+    margin-left: -40px;
+}
+
+
+.active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.menu-toggle {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color:#383535;
+}
+
+
+.menu-toggle i {
+    font-size: 20px;
+}
+
+.dashboard-nav-item {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 5px;
+    border-radius: 15px;
+    padding: 8px 10px; /* Add padding to the navigation items */
+    text-decoration: none;
+    color: black;
+}
+
+.dashboard-nav-item:hover {
+    color: rgb(102, 98, 98);
+    text-decoration: none;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+    .dashboard-nav {
+        flex-direction: column; /* Stack items vertically in mobile view */
+        text-align: center; /* Center align all items in mobile view */
     }
 
-    .sidebar img {
-        max-width: 100%; /* Ensure logo doesn't exceed sidebar width */
+    .brand-logo {
+    margin-right: auto;
+    margin-left: auto; /* Center the logo image horizontally */
+}
+
+
+    .text-center {
+        margin: 10px auto; /* Center align the "CRM" text with some space around it in mobile view */
+    }
+}
+
+
+.dashboard-toolbar {
+    min-height: 84px;
+    background-color:  #d7dfee;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px 27px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+
+
+@media (min-width: 992px) {
+    .dashboard-app {
+        margin-left: 238px;
     }
 
-    .nav {
-        padding-top: 20px; /* Add top padding to the nav */
+    .dashboard-compact .dashboard-app {
+        margin-left: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        padding: 15px 0px;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1070;
     }
 
-    .nav-item {
-        background-color: rgba(255, 255, 255, 0.5); /* Background color for list items */
-        margin-bottom: 5px; /* Add some margin between list items */
-        border-radius: 10px; /* Add border radius to style list items */
+    .dashboard-nav.mobile-show {
+        display: block;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-nav header .menu-toggle {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+@media (min-width: 992px) {
+    .dashboard-toolbar {
+        left: 238px;
     }
 
-    .nav-item a {
-        color: black; /* Change the font color */
+    .dashboard-compact .dashboard-toolbar {
+        left: 0;
     }
+}
+.dashboard-nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; 
+    height: 2px;
+    background-color: #343a40;
+    color: white;
+    transition: width 0.3s ease; 
+}
 
-    .nav-item a:hover {
-        color: rgb(102, 98, 98); /* Change font color on hover */
-        text-decoration: none; /* Remove underline on hover */
-    }
+.dashboard-nav-item:hover::after {
+    width: 75%; 
     
-</style>
+}
+.dashboard-toolbar{
+    background-color:#f9f9f9;
+}
+    
+  </style>
+   
+</head>
 <body>
-    <div class="container-fluid" >
-        <div class="row" >
-            <!-- Collapse Button -->
-            <button style="z-index: 101;background-color: transparent;position: fixed;" class="btn d-md-none" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-expanded="false" aria-controls="sidebarCollapse">
-                <span class="" style="z-index: 101;"><i class="fa-solid fa-bars"></i></span>
-            </button>
-    
-            <!-- Sidebar Column -->
-            <div class="col-md-2 collapse d-md-block bcolor" id="sidebarCollapse" style="z-index: 100;">
-                <div class="sidebar" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/007/784/841/small/health-and-science-medical-innovation-concept-abstract-geometric-futuristic-background-from-hexagons-pattern-light-blue-radiant-background-illustration-vector.jpg');">
-                    <ul class="nav flex-column nv bcolor" style="min-height: 100vh;" id="ul">
-
-                        <div class="text-center mb-4">
-                            <img src="https://cdn-icons-png.freepik.com/256/12885/12885077.png?semt=ais_hybrid" alt="Logo" class="img-fluid" style="max-width: 100px;"><br>
-                            <b class="text-white">CRM</b>
-                        </div>
-
-                        <li class="nav-item px-3">
-                            <a class="nav-link nitem" id="link4" href="{% url 'user_home' %}"><i class="fas fa-home mr-3"></i>Dashboard</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nitem" id="link5" href="{% url 'archive' %}"><i class="fas fa-trash mr-3"></i>Archives</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nitem" id="link5" href="{% url 'logout1' %}"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Main Content Column -->
-            <div class="col-md-10"  id="mainBody">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+  
+<div class='dashboard mt-2'>
+    <div class="dashboard-nav">
+        <center><header><a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+            </header>
+           <img src="https://cdn-icons-png.freepik.com/256/12885/12885077.png?semt=ais_hybrid" alt="Logo" class="img-fluid" style="max-width: 100px;"></a></center>
+        <center><b class="text-center">CRM</b><center></center><br>
+        <nav class="dashboard-nav-list"><a href="{% url 'user_home' %}" class="dashboard-nav-item">
+           <i class="fas fa-home mr-2 "></i> Home </a>
+        <a href="{% url 'archive' %}" class="dashboard-nav-item"><i class="fas fa-trash mr-2"></i> Archive</a>
+        <a href="{% url 'logout1' %}" class="dashboard-nav-item"><i class="fas fa-sign-out-alt mr-2"></i> Logout </a>
+        
+        <div class="nav-item-divider"></div>
+        </nav><br><br>
     </div>
-    
-    <script>
-    // Function to handle click event
-    function handleClick(event) {
-        // Remove the 'active' class from all links
-        document.querySelectorAll('.nitem').forEach(link => {
-            link.classList.remove('active');
-        });
-
-        // Add the 'active' class to the clicked link
-        this.classList.add('active');
-
-        // Store the ID of the clicked link in local storage
-        localStorage.setItem('activeLink', this.id);
-    }
-
-    // Add click event listener to each link
-    document.querySelectorAll('.nitem').forEach(link => {
-        link.addEventListener('click', handleClick);
+   
+        <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
+        
+<div class="container-fluid">
+  <div class="row ">
+    <main role="main" class=" ml-sm-auto col-lg-10 ">
+      <script>
+       const mobileScreen = window.matchMedia("(max-width: 990px )");
+$(document).ready(function () {
+    $(".dashboard-nav-dropdown-toggle").click(function () {
+        $(this).closest(".dashboard-nav-dropdown")
+            .toggleClass("show")
+            .find(".dashboard-nav-dropdown")
+            .removeClass("show");
+        $(this).parent()
+            .siblings()
+            .removeClass("show");
     });
-
-    // On page load, check if there's an active link in local storage and apply the active state
-    document.addEventListener('DOMContentLoaded', function() {
-        const activeLinkId = localStorage.getItem('activeLink');
-        if (activeLinkId) {
-            const activeLink = document.getElementById(activeLinkId);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+    $(".menu-toggle").click(function () {
+        if (mobileScreen.matches) {
+            $(".dashboard-nav").toggleClass("mobile-show");
+        } else {
+            $(".dashboard").toggleClass("dashboard-compact");
         }
     });
-    </script>
-    
-    
+});
+      
+       </script>
+      
+       
+          
+          {% block content %}
+          {% endblock %}
+     
+
+
+<!-- Your page content goes here -->
+
+  
+
+
 </body>
 </html>
