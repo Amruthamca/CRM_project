@@ -2,6 +2,11 @@
 {% block content %}
 
 {% load static %}
+<style>
+    body{
+        overflow: hidden;
+    }
+</style>
 <div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-md-5">
@@ -14,7 +19,7 @@
             {% endif %}
             <div class="card shadow">
                 <div class="card-body">
-                    <h4><img src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-customer-relationship-management-concept-png-image_4667717.png" style="height: 50px;width: 50px;"> CRM</h4>
+                    <h4><img src="https://cdn-icons-png.freepik.com/256/12885/12885077.png?semt=ais_hybrid" style="height: 50px;width: 50px;"> CRM</h4>
                     <p><b>Log into your account</b></p>
                     <form action="{% url 'adminlogin' %}" method="post">
                         {% csrf_token %}

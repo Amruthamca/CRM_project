@@ -1,4 +1,4 @@
-{% extends 'sidebar.html' %}
+{% extends 'sidebar1.html' %}
 {% block content %}
 {% load static %}
 <style>
@@ -101,48 +101,43 @@
 </style>
 <div class="container-fluid mt-5">
 
-<div class="container">
-    <div class="row m-5">
-        <h2 class="container mt-5 ml-2">Dashboard</h2>
-        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
-            <div class="row">
-                <div class="col text-center"><i class="fas fa-chart-pie mt-2 ml-2 fa-3x" style="color: #007bff;"></i></div> 
+    <div class="container">
+        <div class="row m-2">
+            <h2 class="container mt-3 ml-2 text-center ">Dashboard</h2><br>
+    
+            <!-- First Card -->
+            <div class="col-md-3 col-sm-12 my-3 p-2 mt-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+                <div class="row">
+                    <div class="col text-center"><i class="fas fa-chart-pie mt-2 ml-2 fa-3x" style="color: #007bff;"></i></div> 
+                </div>
+                <div class="row">
+                    <div class="col text-center mb-1">Sales <br> $3900</div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col text-center mb-1">Sales <br> $37,900 <span class="ml-2 px-2 py-1" style="color: green;background-color: rgba(10, 220, 10, 0.37);font-size: small;border-radius: 15px;">+ 2.9%</span></div>
+            <div class="col-md-1"></div>
+            <!-- Second Card -->
+            <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+                <div class="row">
+                    <div class="col text-center"><i class="fas fa-box mt-2 ml-2 fa-3x" style="color: #dc3545;"></i></div> 
+                </div>
+                <div class="row">
+                    <div class="col text-center mb-1">Orders <br> $3050 </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
-            <div class="row">
-                <div class="col text-center"><i class="fas fa-box mt-2 ml-2 fa-3x" style="color: #dc3545;"></i></div> 
-            </div>
-            <div class="row">
-                <div class="col text-center mb-1">Orders <br> $3050 <span class="ml-1 px-2 py-1" style="color: red;background-color: rgba(255, 0, 0, 0.3);font-size: small;border-radius: 15px;">- 0.9%</span></div>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
-            <div class="row">
-                <div class="col text-center"><i class="fas fa-user mt-2 ml-2 fa-3x" style="color: #ffc107;"></i></div> 
-            </div>
-            
-            <div class="row">
-                <div class="col text-center mb-1">Customers <br> $7987 <span class="ml-2 px-2 py-1" style="color: rgb(0, 162, 255);background-color: rgba(91, 46, 187, 0.3);font-size: small;border-radius: 15px;">- 0.2%</span></div>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-4 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
-            <div class="row">
-                <div class="col text-center"><i class="fas fa-money-bill  mt-2 ml-2 fa-3x" style="color: #943a1f;"></i></div> 
-            </div>
-            
-            <div class="row">
-                <div class="col text-center mb-1">Revenue <br> $987 <span class="ml-2 px-2 py-1" style="color: rgb(138, 156, 149);background-color: rgba(135, 222, 152, 0.3);font-size: small;border-radius: 15px;">- 0.2%</span></div>
+            <div class="col-md-1"></div>
+            <!-- Third Card -->
+            <div class="col-md-3 col-sm-12 my-3 p-2" style="border-radius: 15px;background-color: white;box-shadow: 1px 2px 4px gray;">
+                <div class="row">
+                    <div class="col text-center"><i class="fas fa-user mt-2 ml-2 fa-3x" style="color: #ffc107;"></i></div> 
+                </div>
+                
+                <div class="row">
+                    <div class="col text-center mb-1">Customers <br> $7987 </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
 
 <div class="container m-3"> 
     <div class="row">
